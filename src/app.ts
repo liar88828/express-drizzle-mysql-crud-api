@@ -2,17 +2,17 @@ import { db } from "./db/conn"
 import { UserSchema } from "./db/schema/users"
 
 
-type TypeUser = {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-  role: "admin" | "user";
-  createdAt: Date;
-  updatedAt: Date;
-}
+// type TypeUser = {
+//   id: number;
+//   name: string;
+//   email: string;
+//   password: string;
+//   role: "admin" | "user";
+//   createdAt: Date;
+//   updatedAt: Date;
+// }
 
-async function runQuery (): Promise<void> 
+async function runQuery ()
 {
   //   const result = await db.insert( UserSchema ).values( {
   //     name: "drizzle",
@@ -20,7 +20,7 @@ async function runQuery (): Promise<void>
   //     password: "123",
   //   } )
   //   console.log( JSON.stringify( result, null, 2 ) );
-  const result: TypeUser[] = await db.select().from( UserSchema );
+  const result = await db.select().from( UserSchema );
   console.log( JSON.stringify( result, null, 2 ) );
 }
 
