@@ -1,0 +1,27 @@
+###test
+GET http://localhost:3000/todo/
+
+###
+GET http://localhost:3000/todo/2147483647
+
+###
+POST http://localhost:3000/todo/
+Content-Type: application/json
+
+{
+  "title":"orangerti",
+  "year": 200
+
+}
+
+###
+PUT http://localhost:3000/todo/2147483647
+Content-Type: application/json
+
+{
+  "title":"orangerti update",
+  "year": 200
+}
+
+###
+DELETE  http://localhost:3000/todo/2147483647

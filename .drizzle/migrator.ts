@@ -2,7 +2,7 @@ import { migrate } from "drizzle-orm/mysql2/migrator";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql2 from "mysql2/promise";
 import path from "path";
-import { envConfig } from "../src/config/config"
+import { envConfig } from '../src/db/config/config';
 const doMigrate = async () =>
 {
   try

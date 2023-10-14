@@ -1,29 +1,29 @@
 {
   "name": "drizzle-crud",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "make simple crud use drizzle orm",
+  "main": "src/index.ts",
   "scripts": {
     "db:generate": "drizzle-kit generate:mysql",
     "db:deploy": "ts-node --files .drizzle/migrator.ts",
-    "dev": "ts-node --files src/app.ts"
+    "dev": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.17",
-    "drizzle-kit": "^0.19.3",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "@types/cors": "^2.8.14",
+    "@types/express": "^4.17.19",
+    "@types/node": "^20.8.6",
+    "drizzle-kit": "^0.19.13",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
-    "@types/node": "^18.15.11",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "drizzle-orm": "^0.27.0",
+    "drizzle-orm": "^0.28.6",
     "express": "^4.18.2",
-    "mysql2": "^3.4.3"
+    "mysql2": "^3.6.1",
+    "typescript": "^5.2.2"
   }
 }
