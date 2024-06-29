@@ -3,19 +3,7 @@ import { db } from '../db/config/config';
 import { eq } from 'drizzle-orm';
 import { IRoleSelect, TodoSchema } from '../db/schema/todo';
 
- 
-
 export class TodoController {
-
-  // private  tryCatch(data){
-  //   try {
-  //
-  //   }catch ( e :ErrorRequestHandler) {
-  //     console.error(e)
-  //     console.error(e.message)
-  //
-  //   }
-  // }
 
   async findAll( req: Request, res: Response ) {
     try {
@@ -37,10 +25,10 @@ export class TodoController {
       console.log( id )
       // const data = db.query.TodoSchema.findFirst( { where: eq( TodoSchema.id, id ) } )
       const data = await db.select()
-                     .from( TodoSchema )
-                     .where( eq( TodoSchema.id, Number( id ) )
-                     ).limit(1)
-      .then(rows=>rows)
+                           .from( TodoSchema )
+                           .where( eq( TodoSchema.id, Number( id ) )
+                           ).limit( 1 )
+                           .then( rows => rows )
       return res.json( { status: 201, data: data } )
     }
 
@@ -54,9 +42,12 @@ export class TodoController {
   async createOne( req: Request, res: Response ) {
     try {
       const { year, title }: IRoleSelect = req.body
-      const id                           = Date.now().toString()
+      const id                           = year.toString().length + title.length + Date.now()
       const data                         = await db.insert( TodoSchema )
-                                                   .values( { year, title, id: Number( id ) } )
+                                                   .values( {
+                                                     year, title, id: Number( id.toString()
+                                                                                .substr( 2, 5 ) ),
+                                                   } )
       return res.json( { status: 201, data } )
     }
     catch ( e: ErrorRequestHandler | any ) {
@@ -86,8 +77,8 @@ export class TodoController {
   async deleteOne( req: Request, res: Response ) {
     try {
 
-      const id   = req.params.id
-      console.log(id)
+      const id = req.params.id
+      console.log( id )
       const data = await db.delete( TodoSchema )
                            .where( eq( TodoSchema.id, Number( id ) ) )
 

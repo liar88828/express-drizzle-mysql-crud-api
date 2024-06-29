@@ -1,5 +1,6 @@
-import { InferModel, sql } from 'drizzle-orm'
+import { sql } from 'drizzle-orm'
 import { datetime, int, mysqlSchema, varchar } from 'drizzle-orm/mysql-core'
+import { InferInsertModel, InferSelectModel } from 'drizzle-orm/table';
 
 export const mySchema = mysqlSchema( "drizzle_crud_mysql" )
 
@@ -15,5 +16,6 @@ export const TodoSchema = mySchema.table( 'todo', {
   UPDATE CURRENT_TIMESTAMP` )
   .notNull(),
 } )
-export type IRoleSelect = InferModel<typeof TodoSchema, 'select'>
-export type IRoleCreate = InferModel<typeof TodoSchema, 'insert'>
+
+export type IRoleSelect = InferSelectModel<typeof TodoSchema>
+export type IRoleCreate = InferInsertModel<typeof TodoSchema>
